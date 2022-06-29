@@ -3,8 +3,8 @@ import 'package:injectable/injectable.dart';
 import 'package:movies_peaple/core/domain/entities/page.dart';
 import 'package:movies_peaple/core/domain/use_case/use_case.dart';
 import 'package:movies_peaple/core/failure/application_failure.dart';
-import 'package:movies_peaple/features/popular_people/data/repository/popular_persons_repository.dart';
-import 'package:movies_peaple/features/popular_people/domain/entities/popular_person.dart';
+import 'package:movies_peaple/features/popular_persons/data/repository/popular_persons_repository.dart';
+import 'package:movies_peaple/features/popular_persons/domain/entities/popular_person.dart';
 
 @injectable
 class FetchPopularPersonsUseCase
