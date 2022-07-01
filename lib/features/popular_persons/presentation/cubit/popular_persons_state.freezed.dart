@@ -20,7 +20,9 @@ mixin _$PopularPersonsState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(Page<PopularPerson> popularPersonsPage)
+    required TResult Function() paginating,
+    required TResult Function(String errorMessage) error,
+    required TResult Function(List<PopularPerson> popularPersonsData)
         popularPersonsLoaded,
   }) =>
       throw _privateConstructorUsedError;
@@ -28,7 +30,9 @@ mixin _$PopularPersonsState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(Page<PopularPerson> popularPersonsPage)?
+    TResult Function()? paginating,
+    TResult Function(String errorMessage)? error,
+    TResult Function(List<PopularPerson> popularPersonsData)?
         popularPersonsLoaded,
   }) =>
       throw _privateConstructorUsedError;
@@ -36,7 +40,9 @@ mixin _$PopularPersonsState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(Page<PopularPerson> popularPersonsPage)?
+    TResult Function()? paginating,
+    TResult Function(String errorMessage)? error,
+    TResult Function(List<PopularPerson> popularPersonsData)?
         popularPersonsLoaded,
     required TResult orElse(),
   }) =>
@@ -45,6 +51,8 @@ mixin _$PopularPersonsState {
   TResult map<TResult extends Object?>({
     required TResult Function(Initial value) initial,
     required TResult Function(Loading value) loading,
+    required TResult Function(Paginating value) paginating,
+    required TResult Function(Error value) error,
     required TResult Function(PopularPersonsLoaded value) popularPersonsLoaded,
   }) =>
       throw _privateConstructorUsedError;
@@ -52,6 +60,8 @@ mixin _$PopularPersonsState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(Initial value)? initial,
     TResult Function(Loading value)? loading,
+    TResult Function(Paginating value)? paginating,
+    TResult Function(Error value)? error,
     TResult Function(PopularPersonsLoaded value)? popularPersonsLoaded,
   }) =>
       throw _privateConstructorUsedError;
@@ -59,6 +69,8 @@ mixin _$PopularPersonsState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Initial value)? initial,
     TResult Function(Loading value)? loading,
+    TResult Function(Paginating value)? paginating,
+    TResult Function(Error value)? error,
     TResult Function(PopularPersonsLoaded value)? popularPersonsLoaded,
     required TResult orElse(),
   }) =>
@@ -123,7 +135,9 @@ class _$Initial implements Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(Page<PopularPerson> popularPersonsPage)
+    required TResult Function() paginating,
+    required TResult Function(String errorMessage) error,
+    required TResult Function(List<PopularPerson> popularPersonsData)
         popularPersonsLoaded,
   }) {
     return initial();
@@ -134,7 +148,9 @@ class _$Initial implements Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(Page<PopularPerson> popularPersonsPage)?
+    TResult Function()? paginating,
+    TResult Function(String errorMessage)? error,
+    TResult Function(List<PopularPerson> popularPersonsData)?
         popularPersonsLoaded,
   }) {
     return initial?.call();
@@ -145,7 +161,9 @@ class _$Initial implements Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(Page<PopularPerson> popularPersonsPage)?
+    TResult Function()? paginating,
+    TResult Function(String errorMessage)? error,
+    TResult Function(List<PopularPerson> popularPersonsData)?
         popularPersonsLoaded,
     required TResult orElse(),
   }) {
@@ -160,6 +178,8 @@ class _$Initial implements Initial {
   TResult map<TResult extends Object?>({
     required TResult Function(Initial value) initial,
     required TResult Function(Loading value) loading,
+    required TResult Function(Paginating value) paginating,
+    required TResult Function(Error value) error,
     required TResult Function(PopularPersonsLoaded value) popularPersonsLoaded,
   }) {
     return initial(this);
@@ -170,6 +190,8 @@ class _$Initial implements Initial {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(Initial value)? initial,
     TResult Function(Loading value)? loading,
+    TResult Function(Paginating value)? paginating,
+    TResult Function(Error value)? error,
     TResult Function(PopularPersonsLoaded value)? popularPersonsLoaded,
   }) {
     return initial?.call(this);
@@ -180,6 +202,8 @@ class _$Initial implements Initial {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Initial value)? initial,
     TResult Function(Loading value)? loading,
+    TResult Function(Paginating value)? paginating,
+    TResult Function(Error value)? error,
     TResult Function(PopularPersonsLoaded value)? popularPersonsLoaded,
     required TResult orElse(),
   }) {
@@ -235,7 +259,9 @@ class _$Loading implements Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(Page<PopularPerson> popularPersonsPage)
+    required TResult Function() paginating,
+    required TResult Function(String errorMessage) error,
+    required TResult Function(List<PopularPerson> popularPersonsData)
         popularPersonsLoaded,
   }) {
     return loading();
@@ -246,7 +272,9 @@ class _$Loading implements Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(Page<PopularPerson> popularPersonsPage)?
+    TResult Function()? paginating,
+    TResult Function(String errorMessage)? error,
+    TResult Function(List<PopularPerson> popularPersonsData)?
         popularPersonsLoaded,
   }) {
     return loading?.call();
@@ -257,7 +285,9 @@ class _$Loading implements Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(Page<PopularPerson> popularPersonsPage)?
+    TResult Function()? paginating,
+    TResult Function(String errorMessage)? error,
+    TResult Function(List<PopularPerson> popularPersonsData)?
         popularPersonsLoaded,
     required TResult orElse(),
   }) {
@@ -272,6 +302,8 @@ class _$Loading implements Loading {
   TResult map<TResult extends Object?>({
     required TResult Function(Initial value) initial,
     required TResult Function(Loading value) loading,
+    required TResult Function(Paginating value) paginating,
+    required TResult Function(Error value) error,
     required TResult Function(PopularPersonsLoaded value) popularPersonsLoaded,
   }) {
     return loading(this);
@@ -282,6 +314,8 @@ class _$Loading implements Loading {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(Initial value)? initial,
     TResult Function(Loading value)? loading,
+    TResult Function(Paginating value)? paginating,
+    TResult Function(Error value)? error,
     TResult Function(PopularPersonsLoaded value)? popularPersonsLoaded,
   }) {
     return loading?.call(this);
@@ -292,6 +326,8 @@ class _$Loading implements Loading {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Initial value)? initial,
     TResult Function(Loading value)? loading,
+    TResult Function(Paginating value)? paginating,
+    TResult Function(Error value)? error,
     TResult Function(PopularPersonsLoaded value)? popularPersonsLoaded,
     required TResult orElse(),
   }) {
@@ -307,11 +343,290 @@ abstract class Loading implements PopularPersonsState {
 }
 
 /// @nodoc
+abstract class _$$PaginatingCopyWith<$Res> {
+  factory _$$PaginatingCopyWith(
+          _$Paginating value, $Res Function(_$Paginating) then) =
+      __$$PaginatingCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$PaginatingCopyWithImpl<$Res>
+    extends _$PopularPersonsStateCopyWithImpl<$Res>
+    implements _$$PaginatingCopyWith<$Res> {
+  __$$PaginatingCopyWithImpl(
+      _$Paginating _value, $Res Function(_$Paginating) _then)
+      : super(_value, (v) => _then(v as _$Paginating));
+
+  @override
+  _$Paginating get _value => super._value as _$Paginating;
+}
+
+/// @nodoc
+
+class _$Paginating implements Paginating {
+  const _$Paginating();
+
+  @override
+  String toString() {
+    return 'PopularPersonsState.paginating()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$Paginating);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function() paginating,
+    required TResult Function(String errorMessage) error,
+    required TResult Function(List<PopularPerson> popularPersonsData)
+        popularPersonsLoaded,
+  }) {
+    return paginating();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function()? paginating,
+    TResult Function(String errorMessage)? error,
+    TResult Function(List<PopularPerson> popularPersonsData)?
+        popularPersonsLoaded,
+  }) {
+    return paginating?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function()? paginating,
+    TResult Function(String errorMessage)? error,
+    TResult Function(List<PopularPerson> popularPersonsData)?
+        popularPersonsLoaded,
+    required TResult orElse(),
+  }) {
+    if (paginating != null) {
+      return paginating();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Initial value) initial,
+    required TResult Function(Loading value) loading,
+    required TResult Function(Paginating value) paginating,
+    required TResult Function(Error value) error,
+    required TResult Function(PopularPersonsLoaded value) popularPersonsLoaded,
+  }) {
+    return paginating(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(Initial value)? initial,
+    TResult Function(Loading value)? loading,
+    TResult Function(Paginating value)? paginating,
+    TResult Function(Error value)? error,
+    TResult Function(PopularPersonsLoaded value)? popularPersonsLoaded,
+  }) {
+    return paginating?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Initial value)? initial,
+    TResult Function(Loading value)? loading,
+    TResult Function(Paginating value)? paginating,
+    TResult Function(Error value)? error,
+    TResult Function(PopularPersonsLoaded value)? popularPersonsLoaded,
+    required TResult orElse(),
+  }) {
+    if (paginating != null) {
+      return paginating(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class Paginating implements PopularPersonsState {
+  const factory Paginating() = _$Paginating;
+}
+
+/// @nodoc
+abstract class _$$ErrorCopyWith<$Res> {
+  factory _$$ErrorCopyWith(_$Error value, $Res Function(_$Error) then) =
+      __$$ErrorCopyWithImpl<$Res>;
+  $Res call({String errorMessage});
+}
+
+/// @nodoc
+class __$$ErrorCopyWithImpl<$Res>
+    extends _$PopularPersonsStateCopyWithImpl<$Res>
+    implements _$$ErrorCopyWith<$Res> {
+  __$$ErrorCopyWithImpl(_$Error _value, $Res Function(_$Error) _then)
+      : super(_value, (v) => _then(v as _$Error));
+
+  @override
+  _$Error get _value => super._value as _$Error;
+
+  @override
+  $Res call({
+    Object? errorMessage = freezed,
+  }) {
+    return _then(_$Error(
+      errorMessage: errorMessage == freezed
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$Error implements Error {
+  const _$Error({required this.errorMessage});
+
+  @override
+  final String errorMessage;
+
+  @override
+  String toString() {
+    return 'PopularPersonsState.error(errorMessage: $errorMessage)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$Error &&
+            const DeepCollectionEquality()
+                .equals(other.errorMessage, errorMessage));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(errorMessage));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$ErrorCopyWith<_$Error> get copyWith =>
+      __$$ErrorCopyWithImpl<_$Error>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function() paginating,
+    required TResult Function(String errorMessage) error,
+    required TResult Function(List<PopularPerson> popularPersonsData)
+        popularPersonsLoaded,
+  }) {
+    return error(errorMessage);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function()? paginating,
+    TResult Function(String errorMessage)? error,
+    TResult Function(List<PopularPerson> popularPersonsData)?
+        popularPersonsLoaded,
+  }) {
+    return error?.call(errorMessage);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function()? paginating,
+    TResult Function(String errorMessage)? error,
+    TResult Function(List<PopularPerson> popularPersonsData)?
+        popularPersonsLoaded,
+    required TResult orElse(),
+  }) {
+    if (error != null) {
+      return error(errorMessage);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Initial value) initial,
+    required TResult Function(Loading value) loading,
+    required TResult Function(Paginating value) paginating,
+    required TResult Function(Error value) error,
+    required TResult Function(PopularPersonsLoaded value) popularPersonsLoaded,
+  }) {
+    return error(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(Initial value)? initial,
+    TResult Function(Loading value)? loading,
+    TResult Function(Paginating value)? paginating,
+    TResult Function(Error value)? error,
+    TResult Function(PopularPersonsLoaded value)? popularPersonsLoaded,
+  }) {
+    return error?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Initial value)? initial,
+    TResult Function(Loading value)? loading,
+    TResult Function(Paginating value)? paginating,
+    TResult Function(Error value)? error,
+    TResult Function(PopularPersonsLoaded value)? popularPersonsLoaded,
+    required TResult orElse(),
+  }) {
+    if (error != null) {
+      return error(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class Error implements PopularPersonsState {
+  const factory Error({required final String errorMessage}) = _$Error;
+
+  String get errorMessage => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  _$$ErrorCopyWith<_$Error> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 abstract class _$$PopularPersonsLoadedCopyWith<$Res> {
   factory _$$PopularPersonsLoadedCopyWith(_$PopularPersonsLoaded value,
           $Res Function(_$PopularPersonsLoaded) then) =
       __$$PopularPersonsLoadedCopyWithImpl<$Res>;
-  $Res call({Page<PopularPerson> popularPersonsPage});
+  $Res call({List<PopularPerson> popularPersonsData});
 }
 
 /// @nodoc
@@ -327,13 +642,13 @@ class __$$PopularPersonsLoadedCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? popularPersonsPage = freezed,
+    Object? popularPersonsData = freezed,
   }) {
     return _then(_$PopularPersonsLoaded(
-      popularPersonsPage: popularPersonsPage == freezed
-          ? _value.popularPersonsPage
-          : popularPersonsPage // ignore: cast_nullable_to_non_nullable
-              as Page<PopularPerson>,
+      popularPersonsData: popularPersonsData == freezed
+          ? _value._popularPersonsData
+          : popularPersonsData // ignore: cast_nullable_to_non_nullable
+              as List<PopularPerson>,
     ));
   }
 }
@@ -341,14 +656,20 @@ class __$$PopularPersonsLoadedCopyWithImpl<$Res>
 /// @nodoc
 
 class _$PopularPersonsLoaded implements PopularPersonsLoaded {
-  const _$PopularPersonsLoaded({required this.popularPersonsPage});
+  const _$PopularPersonsLoaded(
+      {required final List<PopularPerson> popularPersonsData})
+      : _popularPersonsData = popularPersonsData;
 
+  final List<PopularPerson> _popularPersonsData;
   @override
-  final Page<PopularPerson> popularPersonsPage;
+  List<PopularPerson> get popularPersonsData {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_popularPersonsData);
+  }
 
   @override
   String toString() {
-    return 'PopularPersonsState.popularPersonsLoaded(popularPersonsPage: $popularPersonsPage)';
+    return 'PopularPersonsState.popularPersonsLoaded(popularPersonsData: $popularPersonsData)';
   }
 
   @override
@@ -357,12 +678,12 @@ class _$PopularPersonsLoaded implements PopularPersonsLoaded {
         (other.runtimeType == runtimeType &&
             other is _$PopularPersonsLoaded &&
             const DeepCollectionEquality()
-                .equals(other.popularPersonsPage, popularPersonsPage));
+                .equals(other._popularPersonsData, _popularPersonsData));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(popularPersonsPage));
+      runtimeType, const DeepCollectionEquality().hash(_popularPersonsData));
 
   @JsonKey(ignore: true)
   @override
@@ -375,10 +696,12 @@ class _$PopularPersonsLoaded implements PopularPersonsLoaded {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(Page<PopularPerson> popularPersonsPage)
+    required TResult Function() paginating,
+    required TResult Function(String errorMessage) error,
+    required TResult Function(List<PopularPerson> popularPersonsData)
         popularPersonsLoaded,
   }) {
-    return popularPersonsLoaded(popularPersonsPage);
+    return popularPersonsLoaded(popularPersonsData);
   }
 
   @override
@@ -386,10 +709,12 @@ class _$PopularPersonsLoaded implements PopularPersonsLoaded {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(Page<PopularPerson> popularPersonsPage)?
+    TResult Function()? paginating,
+    TResult Function(String errorMessage)? error,
+    TResult Function(List<PopularPerson> popularPersonsData)?
         popularPersonsLoaded,
   }) {
-    return popularPersonsLoaded?.call(popularPersonsPage);
+    return popularPersonsLoaded?.call(popularPersonsData);
   }
 
   @override
@@ -397,12 +722,14 @@ class _$PopularPersonsLoaded implements PopularPersonsLoaded {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(Page<PopularPerson> popularPersonsPage)?
+    TResult Function()? paginating,
+    TResult Function(String errorMessage)? error,
+    TResult Function(List<PopularPerson> popularPersonsData)?
         popularPersonsLoaded,
     required TResult orElse(),
   }) {
     if (popularPersonsLoaded != null) {
-      return popularPersonsLoaded(popularPersonsPage);
+      return popularPersonsLoaded(popularPersonsData);
     }
     return orElse();
   }
@@ -412,6 +739,8 @@ class _$PopularPersonsLoaded implements PopularPersonsLoaded {
   TResult map<TResult extends Object?>({
     required TResult Function(Initial value) initial,
     required TResult Function(Loading value) loading,
+    required TResult Function(Paginating value) paginating,
+    required TResult Function(Error value) error,
     required TResult Function(PopularPersonsLoaded value) popularPersonsLoaded,
   }) {
     return popularPersonsLoaded(this);
@@ -422,6 +751,8 @@ class _$PopularPersonsLoaded implements PopularPersonsLoaded {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(Initial value)? initial,
     TResult Function(Loading value)? loading,
+    TResult Function(Paginating value)? paginating,
+    TResult Function(Error value)? error,
     TResult Function(PopularPersonsLoaded value)? popularPersonsLoaded,
   }) {
     return popularPersonsLoaded?.call(this);
@@ -432,6 +763,8 @@ class _$PopularPersonsLoaded implements PopularPersonsLoaded {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Initial value)? initial,
     TResult Function(Loading value)? loading,
+    TResult Function(Paginating value)? paginating,
+    TResult Function(Error value)? error,
     TResult Function(PopularPersonsLoaded value)? popularPersonsLoaded,
     required TResult orElse(),
   }) {
@@ -444,10 +777,10 @@ class _$PopularPersonsLoaded implements PopularPersonsLoaded {
 
 abstract class PopularPersonsLoaded implements PopularPersonsState {
   const factory PopularPersonsLoaded(
-          {required final Page<PopularPerson> popularPersonsPage}) =
+          {required final List<PopularPerson> popularPersonsData}) =
       _$PopularPersonsLoaded;
 
-  Page<PopularPerson> get popularPersonsPage =>
+  List<PopularPerson> get popularPersonsData =>
       throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$$PopularPersonsLoadedCopyWith<_$PopularPersonsLoaded> get copyWith =>

@@ -10,6 +10,11 @@ abstract class PopularPersonsState with _$PopularPersonsState {
 
   const factory PopularPersonsState.loading() = Loading;
 
+  const factory PopularPersonsState.paginating() = Paginating;
+
+  const factory PopularPersonsState.error({required String errorMessage}) =
+      Error;
+
   const factory PopularPersonsState.popularPersonsLoaded(
-      {required Page<PopularPerson> popularPersonsPage}) = PopularPersonsLoaded;
+      {required List<PopularPerson> popularPersonsData}) = PopularPersonsLoaded;
 }

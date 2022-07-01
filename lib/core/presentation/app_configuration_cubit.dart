@@ -14,7 +14,7 @@ class AppConfigurationCubit extends Cubit<AppConfigurationState> {
   AppConfigurationCubit(this.appConfigurationUseCase)
       : super(const AppConfigurationState.initial());
 
-  Future fetchAppConfiguration() async {
+  void fetchAppConfiguration() async {
     emit(const AppConfigurationState.loading());
     final result = await appConfigurationUseCase(NoParams());
     result.fold(

@@ -6,8 +6,9 @@ extension PopularPersonsToDomainMapper on PopularPersonsApiResponse {
   Page<PopularPerson> toDomain() {
     return Page(
         data: results
-            .map(
+            !.map(
               (e) => PopularPerson(
+                originalCountry: e.knownFor?.first.originCountry?.first ?? "",
                 popularity: e.popularity,
                 profileImagePath: e.profilePath,
                 personId: e.id,

@@ -9,7 +9,7 @@ class PopularPersonsApiResponse {
   });
 
   final int page;
-  final List<Person> results;
+  final List<Person>? results;
   final int totalPages;
   final int totalResults;
 
@@ -24,7 +24,9 @@ class PopularPersonsApiResponse {
 
   Map<String, dynamic> toJson() => {
         "page": page,
-        "results": List<dynamic>.from(results.map((x) => x.toJson())),
+        "results": results != null
+            ? List<dynamic>.from(results!.map((x) => x.toJson()))
+            : null,
         "total_pages": totalPages,
         "total_results": totalResults,
       };
@@ -45,7 +47,7 @@ class Person {
   final bool adult;
   final int gender;
   final int id;
-  final List<KnownFor> knownFor;
+  final List<KnownFor>? knownFor;
   final String knownForDepartment;
   final String name;
   final double popularity;
@@ -67,7 +69,9 @@ class Person {
         "adult": adult,
         "gender": gender,
         "id": id,
-        "known_for": List<dynamic>.from(knownFor.map((x) => x.toJson())),
+        "known_for": knownFor != null
+            ? List<dynamic>.from(knownFor!.map((x) => x.toJson()))
+            : null,
         "known_for_department": knownForDepartment,
         "name": name,
         "popularity": popularity,
@@ -97,24 +101,24 @@ class KnownFor {
     required this.originalName,
   });
 
-  final bool adult;
+  final bool? adult;
   final String backdropPath;
   final List<int> genreIds;
   final int id;
   final String mediaType;
   final String originalLanguage;
-  final String originalTitle;
+  final String? originalTitle;
   final String overview;
   final String posterPath;
   final DateTime? releaseDate;
-  final String title;
-  final bool video;
-  final double voteAverage;
-  final int voteCount;
+  final String? title;
+  final bool? video;
+  final double? voteAverage;
+  final int? voteCount;
   final DateTime? firstAirDate;
-  final String name;
+  final String? name;
   final List<String>? originCountry;
-  final String originalName;
+  final String? originalName;
 
   factory KnownFor.fromJson(Map<String, dynamic> json) => KnownFor(
         adult: json["adult"],

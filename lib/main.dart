@@ -1,21 +1,67 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movies_peaple/core/presentation/app_configuration_state.dart';
+import 'package:movies_peaple/dependency_injection/di.dart';
 import 'package:movies_peaple/features/popular_persons/presentation/pages/popular_persons_page.dart';
 
-void main() {
+import 'core/presentation/app_configuration_cubit.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await initGetIt();
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
 
   @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  late AppConfigurationCubit configurationCubit;
+
+  @override
+  void initState() {
+    super.initState();
+    configurationCubit = getIt<AppConfigurationCubit>();
+    configurationCubit.fetchAppConfiguration();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+    return BlocBuilder<AppConfigurationCubit, AppConfigurationState>(
+      bloc: configurationCubit,
+      buildWhen: (_, current) =>
+          current is Loading || current is AppConfigurationFetched,
+
+      /// this logic should be in landing page /// to check onine/offline mode
+      builder: (context, state) {
+        return MaterialApp(
+          title: 'Flutter Demo',
+          theme: ThemeData(
+            primarySwatch: Colors.blue,
+          ),
+          home: state.maybeWhen(
+            orElse: () => const LoadingConfigurationState(),
+            appConfigurationFetched: () => const PopularPersonsPage(),
+          ),
+        );
+      },
+    );
+  }
+}
+
+class LoadingConfigurationState extends StatelessWidget {
+  const LoadingConfigurationState({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return const Scaffold(
+      body: Center(
+        child: CircularProgressIndicator(),
       ),
-      home: const PopularPersonsPage(),
     );
   }
 }

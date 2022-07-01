@@ -10,16 +10,25 @@ abstract class AppModule {
   Future<SharedPreferences> get prefs => SharedPreferences.getInstance();
 
   @LazySingleton()
-  final aDio = Dio(
-    BaseOptions(
-      baseUrl: "https://api.themoviedb.org/3",
-      headers: {"Content-Type": "application/json"},
-      queryParameters: {"api_key": apiKey, "apiKey": "en-US"},
-    ),
-  ).interceptors.add(
-        DioLoggingInterceptor(
-          level: Level.basic,
-          compact: false,
-        ),
-      );
+  Dio get dio {
+    final client = Dio(
+      BaseOptions(
+        baseUrl: "http://api.themoviedb.org/3",
+        contentType: "application/json",
+        queryParameters: {"api_key": apiKey},
+        // connectTimeout: 3000,
+      ),
+    );
+    client.interceptors.add(
+      LogInterceptor(
+        error: true,
+        request: true,
+        requestBody: true,
+        requestHeader: true,
+        responseBody: true,
+        responseHeader: true,
+      ),
+    );
+    return client;
+  }
 }
