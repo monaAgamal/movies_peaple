@@ -51,7 +51,7 @@ class Person {
   final String knownForDepartment;
   final String name;
   final double popularity;
-  final String profilePath;
+  final String? profilePath;
 
   factory Person.fromJson(Map<String, dynamic> json) => Person(
         adult: json["adult"],
@@ -102,7 +102,7 @@ class KnownFor {
   });
 
   final bool? adult;
-  final String backdropPath;
+  final String? backdropPath;
   final List<int> genreIds;
   final int id;
   final String mediaType;

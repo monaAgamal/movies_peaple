@@ -42,6 +42,25 @@ class _MyAppState extends State<MyApp> {
           title: 'Flutter Demo',
           theme: ThemeData(
             primarySwatch: Colors.blue,
+            primaryColor: Colors.white,
+            accentColor: Colors.black,
+            colorScheme: const ColorScheme(
+              onError: Colors.white,
+              onBackground: Colors.black,
+              background: Colors.white,
+              brightness: Brightness.light,
+              error: Colors.red,
+              surface: Colors.white,
+              onSurface: Colors.black,
+              onSecondary: Colors.white,
+              onPrimary: Colors.black,
+              primary: Colors.white,
+              secondary: Colors.black,
+            ),
+            appBarTheme: const AppBarTheme(
+              elevation: 0,
+              color: Colors.white,
+            ),
           ),
           home: state.maybeWhen(
             orElse: () => const LoadingConfigurationState(),

@@ -1,5 +1,8 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'dart:developer';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movies_peaple/core/domain/entities/app_configuration.dart';
 import 'package:movies_peaple/dependency_injection/di.dart';
 import 'package:movies_peaple/features/popular_persons/domain/entities/popular_person.dart';
 import 'package:movies_peaple/features/popular_persons/presentation/cubit/popular_persons_cubit.dart';
@@ -12,6 +15,7 @@ class PopularPersonsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(),
       body: _Body(),
     );
   }
@@ -24,23 +28,63 @@ class _Body extends StatefulWidget {
 
 class _BodyState extends State<_Body> {
   late PopularPersonsCubit popularPersonsCubit;
+  late final ScrollController scrollController;
 
   @override
   void initState() {
     super.initState();
     popularPersonsCubit = getIt<PopularPersonsCubit>();
     popularPersonsCubit.fetchFirstPatchOfPopularPersons();
+    scrollController = ScrollController();
+
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      scrollController.addListener(() {
+        if (popularPersonsCubit.canLoadMore &&
+            scrollController.position.pixels >=
+                scrollController.position.maxScrollExtent) {
+          popularPersonsCubit.loadMorePageOfPopularPeople();
+        }
+      });
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<PopularPersonsCubit, PopularPersonsState>(
       bloc: popularPersonsCubit,
+      buildWhen: (prev, current) =>
+          current is PopularPersonsLoaded || current is Loading,
       builder: (context, state) {
         return state.maybeWhen(
-          orElse: () => const Center(child: CircularProgressIndicator()),
-          popularPersonsLoaded: (data) =>
-              PopularPeopleList(popularPersons: data),
+          orElse: () => const Center(
+              child: CircularProgressIndicator(color: Colors.black)),
+          popularPersonsLoaded: (data) => RefreshIndicator(
+            color: Colors.black,
+            onRefresh: () async {
+              popularPersonsCubit.fetchFirstPatchOfPopularPersons();
+            },
+            child: SingleChildScrollView(
+              controller: scrollController,
+              child: Column(
+                children: [
+                  PopularPeopleList(popularPersons: data),
+                  BlocBuilder<PopularPersonsCubit, PopularPersonsState>(
+                    bloc: popularPersonsCubit,
+                    buildWhen: (prev, current) => current is Paginating,
+                    builder: (context, state) => state.maybeWhen(
+                      orElse: () => const SizedBox.shrink(),
+                      paginating: () => const Padding(
+                        padding: EdgeInsets.only(bottom: 8.0),
+                        child: CircularProgressIndicator(
+                          color: Colors.black,
+                        ),
+                      ),
+                    ),
+                  )
+                ],
+              ),
+            ),
+          ),
         );
       },
     );
@@ -56,9 +100,14 @@ class PopularPeopleList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.separated(
+      shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
+      padding: const EdgeInsets.all(12),
       separatorBuilder: (_, index) => const Divider(),
       itemCount: popularPersons.length,
-      itemBuilder: (_, __) => Container(),
+      itemBuilder: (_, index) => PopularPersonItem(
+        person: popularPersons[index],
+      ),
     );
   }
 }
@@ -66,21 +115,40 @@ class PopularPeopleList extends StatelessWidget {
 class PopularPersonItem extends StatelessWidget {
   final PopularPerson person;
 
-  const PopularPersonItem({super.key, required this.person});
+  PopularPersonItem({super.key, required this.person});
+
+  final imageConfiguration = getIt<AppConfiguration>();
 
   @override
   Widget build(BuildContext context) {
+    final imageUrl =
+        "${imageConfiguration.imageConfiguration.secureBaseUrl}/${imageConfiguration.imageConfiguration.profileSizes.last}/${person.profileImagePath}";
+    log(imageUrl);
     return Row(
       children: [
-        Image.network(person.profileImagePath),
+        CachedNetworkImage(
+          imageUrl: imageUrl,
+          height: 45,
+          width: 45,
+          imageBuilder: (context, image) => CircleAvatar(
+            backgroundImage: image,
+            radius: 150,
+          ),
+          placeholder: (context, url) => const CircularProgressIndicator(
+            color: Colors.black,
+          ),
+        ),
+        const SizedBox(width: 12),
         Column(
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(person.personName),
             Text(person.originalCountry),
           ],
         ),
+        const Expanded(child: SizedBox()),
         GestureDetector(
           onTap: () {
             Navigator.of(context).push(
