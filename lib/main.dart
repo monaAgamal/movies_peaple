@@ -35,11 +35,11 @@ class _MyAppState extends State<MyApp> {
       bloc: configurationCubit,
       buildWhen: (_, current) =>
           current is Loading || current is AppConfigurationFetched,
-
       /// this logic should be in landing page /// to check onine/offline mode
       builder: (context, state) {
         return MaterialApp(
           title: 'Flutter Demo',
+          debugShowCheckedModeBanner: false,
           theme: ThemeData(
             primarySwatch: Colors.blue,
             primaryColor: Colors.white,
