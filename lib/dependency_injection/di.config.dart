@@ -9,7 +9,6 @@ import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
 import 'package:shared_preferences/shared_preferences.dart' as _i18;
 
-import '../core/app_module/app_module.dart' as _i33;
 import '../core/data/app_configuration_data_source/app_configuration_data_source.dart'
     as _i27;
 import '../core/data/app_configuration_data_source/app_configuration_data_source_impl.dart'
@@ -20,7 +19,7 @@ import '../core/data/repositories/app_configuration_repository.dart' as _i29;
 import '../core/data/repositories/app_configuration_repository_impl.dart'
     as _i30;
 import '../core/domain/use_case/app_configuration_use_case.dart' as _i31;
-import '../core/presentation/app_configuration_cubit.dart' as _i32;
+import '../core/presentation/cubit/app_configuration_cubit.dart' as _i32;
 import '../features/image_preview/data/data_sources/image_downloader_remote_data_source.dart'
     as _i4;
 import '../features/image_preview/data/data_sources/image_downloader_remote_data_source_impl.dart'
@@ -47,7 +46,7 @@ import '../features/person_details/domain/use_cases/fetch_person_details.dart'
     as _i21;
 import '../features/person_details/domain/use_cases/fetch_person_images.dart'
     as _i22;
-import '../features/person_details/presentation/person_details_cubit/person_details_cubit.dart'
+import '../features/person_details/presentation/cubit/person_details_cubit.dart'
     as _i25;
 import '../features/popular_persons/data/api_service/api_service.dart' as _i13;
 import '../features/popular_persons/data/data_sources/popular_persons_remote_data_source.dart'
@@ -61,7 +60,9 @@ import '../features/popular_persons/data/repository/popular_persons_repository_i
 import '../features/popular_persons/domain/use_cases/fetch_popular_persons_use_case.dart'
     as _i23;
 import '../features/popular_persons/presentation/cubit/popular_persons_cubit.dart'
-    as _i26; // ignore_for_file: unnecessary_lambdas
+    as _i26;
+import 'app_module/app_module.dart'
+    as _i33; // ignore_for_file: unnecessary_lambdas
 
 // ignore_for_file: lines_longer_than_80_chars
 /// initializes the registration of provided dependencies inside of [GetIt]

@@ -1,6 +1,6 @@
-import 'package:movies_peaple/core/exception/application_excption.dart';
-import 'package:movies_peaple/core/exception/server_exception.dart';
-import 'package:movies_peaple/core/failure/server_failure.dart';
+import 'package:movies_peaple/core/errors/exception/application_excption.dart';
+import 'package:movies_peaple/core/errors/exception/server_exception.dart';
+import 'package:movies_peaple/core/errors/failure/server_failure.dart';
 
 abstract class ApplicationFailure {}
 

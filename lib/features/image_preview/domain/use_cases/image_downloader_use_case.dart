@@ -2,7 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 import 'package:injectable/injectable.dart';
 import 'package:movies_peaple/core/domain/use_case/use_case.dart';
-import 'package:movies_peaple/core/failure/application_failure.dart';
+import 'package:movies_peaple/core/errors/failure/application_failure.dart';
 
 import '../../data/repository/image_downloader_repository.dart';
 

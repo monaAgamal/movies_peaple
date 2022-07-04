@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:movies_peaple/core/failure/application_failure.dart';
+import 'package:movies_peaple/core/errors/failure/application_failure.dart';
 
 part 'server_failure.freezed.dart';
 

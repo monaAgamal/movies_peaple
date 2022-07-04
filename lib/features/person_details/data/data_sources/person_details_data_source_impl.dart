@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'dart:developer';
 import 'package:injectable/injectable.dart';
-import 'package:movies_peaple/core/exception/application_excption.dart';
+import 'package:movies_peaple/core/errors/exception/application_excption.dart';
 import 'package:movies_peaple/features/person_details/data/data_sources/person_details_data_source.dart';
 import 'package:movies_peaple/features/person_details/data/models/person_details_api_response.dart';
 import 'package:movies_peaple/features/person_details/data/models/person_imags_api_response.dart';

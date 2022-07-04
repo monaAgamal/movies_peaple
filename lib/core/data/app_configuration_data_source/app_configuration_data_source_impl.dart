@@ -3,7 +3,7 @@ import 'package:injectable/injectable.dart';
 import 'package:movies_peaple/core/data/app_configuration_data_source/app_configuration_data_source.dart';
 import 'package:movies_peaple/core/data/configuration_api_service/configuration_api_service.dart';
 import 'package:movies_peaple/core/data/models/configuration_api_response.dart';
-import 'package:movies_peaple/core/exception/application_excption.dart';
+import 'package:movies_peaple/core/errors/exception/application_excption.dart';
 
 @LazySingleton(as: AppConfigurationRemoteDataSource)
 class AppConfigurationRemoteDataSourceImpl

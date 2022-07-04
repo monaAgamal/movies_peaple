@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:movies_peaple/core/domain/entities/page.dart';
-import 'package:movies_peaple/core/failure/application_failure.dart';
+import 'package:movies_peaple/core/errors/failure/application_failure.dart';
 
 import '../../domain/entities/popular_person.dart';
 

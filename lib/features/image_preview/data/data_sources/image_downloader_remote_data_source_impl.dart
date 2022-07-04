@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
-import 'package:movies_peaple/core/exception/application_excption.dart';
+import 'package:movies_peaple/core/errors/exception/application_excption.dart';
 import 'package:movies_peaple/features/image_preview/data/data_sources/image_downloader_remote_data_source.dart';
 
 @LazySingleton(as: ImageDownloaderRemoteDataSource)

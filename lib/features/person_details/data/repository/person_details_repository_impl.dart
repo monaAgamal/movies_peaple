@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
-import 'package:movies_peaple/core/exception/application_excption.dart';
-import 'package:movies_peaple/core/failure/application_failure.dart';
+import 'package:movies_peaple/core/errors/exception/application_excption.dart';
+import 'package:movies_peaple/core/errors/failure/application_failure.dart';
 import 'package:movies_peaple/features/person_details/data/data_sources/person_details_data_source.dart';
 import 'package:movies_peaple/features/person_details/data/mappers/person_details_api_response_to_domain_mapper.dart';
 import 'package:movies_peaple/features/person_details/data/mappers/person_images_to_domain_mapper.dart';

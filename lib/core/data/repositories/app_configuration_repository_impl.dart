@@ -4,8 +4,8 @@ import 'package:movies_peaple/core/data/app_configuration_data_source/app_config
 import 'package:movies_peaple/core/data/model_to_domain_mappers/app_configuration_to_domain.dart';
 import 'package:movies_peaple/core/data/repositories/app_configuration_repository.dart';
 import 'package:movies_peaple/core/domain/entities/app_configuration.dart';
-import 'package:movies_peaple/core/exception/application_excption.dart';
-import 'package:movies_peaple/core/failure/application_failure.dart';
+import 'package:movies_peaple/core/errors/exception/application_excption.dart';
+import 'package:movies_peaple/core/errors/failure/application_failure.dart';
 
 @LazySingleton(as: AppConfigurationRepository)
 class AppConfigurationRepositoryImpl implements AppConfigurationRepository {

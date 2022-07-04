@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:movies_peaple/core/exception/application_excption.dart';
+import 'package:movies_peaple/core/errors/exception/application_excption.dart';
 
 part 'client_exception.freezed.dart';
 

@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
-import 'package:movies_peaple/core/exception/client_exception.dart';
-import 'package:movies_peaple/core/exception/server_exception.dart';
+import 'package:movies_peaple/core/errors/exception/client_exception.dart';
+import 'package:movies_peaple/core/errors/exception/server_exception.dart';
 
 class ApplicationException implements Exception {}
 
