@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:movies_peaple/dependency_injection/di.dart';
 import 'dart:developer';
 
@@ -33,6 +34,8 @@ class ImagePreviewPage extends StatelessWidget {
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
+                    SvgPicture.asset('assets/svg/celebration-spark.svg'),
+                    const SizedBox(height: 12),
                     const Text('Image saved successfully'),
                     const SizedBox(height: 12),
                     TextButton(

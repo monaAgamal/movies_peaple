@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'dart:developer';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:movies_peaple/core/domain/entities/app_configuration.dart';
 import 'package:movies_peaple/dependency_injection/di.dart';
 import 'package:movies_peaple/features/popular_persons/domain/entities/popular_person.dart';
@@ -143,6 +144,13 @@ class PopularPersonItem extends StatelessWidget {
             imageBuilder: (context, image) => CircleAvatar(
               backgroundImage: image,
               radius: 150,
+            ),
+            errorWidget: (_, __, ____) => Container(
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                borderRadius: BorderRadius.circular(150),
+              ),
+              child: SvgPicture.asset('assets/svg/user.svg'),
             ),
             placeholder: (context, url) => const CircularProgressIndicator(
               color: Colors.black,
