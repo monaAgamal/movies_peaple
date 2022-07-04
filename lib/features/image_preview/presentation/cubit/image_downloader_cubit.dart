@@ -1,5 +1,5 @@
+import 'dart:developer';
 import 'dart:io';
-
 import 'package:bloc/bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:movies_peaple/features/image_preview/domain/use_cases/image_downloader_use_case.dart';
@@ -15,11 +15,20 @@ class ImageDownloaderCubit extends Cubit<ImageDownloaderState> {
 
   Future saveDownloadableImageToLocal({required String imageUrl}) async {
     emit(const ImageDownloaderState.downloading());
-    final Directory appDocDir = await getLibraryDirectory();
-    final result = downloadImageFromUrlUseCase(
+    final Directory appDocDir = await getApplicationDocumentsDirectory();
+    final result = await downloadImageFromUrlUseCase(
       DownloadableImageParam(
           imageUrl: imageUrl,
           saveLocalPath: "${appDocDir.path}/${imageUrl.split('/').last}"),
+    );
+    result.fold(
+      (l) => emit(
+          const ImageDownloaderState.error(errorMsg: "Some thing went wrong")),
+      (r) {
+        emit(
+          ImageDownloaderState.imageDownloaded(isSuccessful: r),
+        );
+      },
     );
   }
 }

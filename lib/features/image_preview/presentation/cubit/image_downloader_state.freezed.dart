@@ -20,6 +20,7 @@ mixin _$ImageDownloaderState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() downloading,
+    required TResult Function(String errorMsg) error,
     required TResult Function(bool isSuccessful) imageDownloaded,
   }) =>
       throw _privateConstructorUsedError;
@@ -27,6 +28,7 @@ mixin _$ImageDownloaderState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? downloading,
+    TResult Function(String errorMsg)? error,
     TResult Function(bool isSuccessful)? imageDownloaded,
   }) =>
       throw _privateConstructorUsedError;
@@ -34,6 +36,7 @@ mixin _$ImageDownloaderState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? downloading,
+    TResult Function(String errorMsg)? error,
     TResult Function(bool isSuccessful)? imageDownloaded,
     required TResult orElse(),
   }) =>
@@ -42,6 +45,7 @@ mixin _$ImageDownloaderState {
   TResult map<TResult extends Object?>({
     required TResult Function(Initial value) initial,
     required TResult Function(Downloading value) downloading,
+    required TResult Function(Error value) error,
     required TResult Function(ImageDownloaded value) imageDownloaded,
   }) =>
       throw _privateConstructorUsedError;
@@ -49,6 +53,7 @@ mixin _$ImageDownloaderState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(Initial value)? initial,
     TResult Function(Downloading value)? downloading,
+    TResult Function(Error value)? error,
     TResult Function(ImageDownloaded value)? imageDownloaded,
   }) =>
       throw _privateConstructorUsedError;
@@ -56,6 +61,7 @@ mixin _$ImageDownloaderState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Initial value)? initial,
     TResult Function(Downloading value)? downloading,
+    TResult Function(Error value)? error,
     TResult Function(ImageDownloaded value)? imageDownloaded,
     required TResult orElse(),
   }) =>
@@ -120,6 +126,7 @@ class _$Initial implements Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() downloading,
+    required TResult Function(String errorMsg) error,
     required TResult Function(bool isSuccessful) imageDownloaded,
   }) {
     return initial();
@@ -130,6 +137,7 @@ class _$Initial implements Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? downloading,
+    TResult Function(String errorMsg)? error,
     TResult Function(bool isSuccessful)? imageDownloaded,
   }) {
     return initial?.call();
@@ -140,6 +148,7 @@ class _$Initial implements Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? downloading,
+    TResult Function(String errorMsg)? error,
     TResult Function(bool isSuccessful)? imageDownloaded,
     required TResult orElse(),
   }) {
@@ -154,6 +163,7 @@ class _$Initial implements Initial {
   TResult map<TResult extends Object?>({
     required TResult Function(Initial value) initial,
     required TResult Function(Downloading value) downloading,
+    required TResult Function(Error value) error,
     required TResult Function(ImageDownloaded value) imageDownloaded,
   }) {
     return initial(this);
@@ -164,6 +174,7 @@ class _$Initial implements Initial {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(Initial value)? initial,
     TResult Function(Downloading value)? downloading,
+    TResult Function(Error value)? error,
     TResult Function(ImageDownloaded value)? imageDownloaded,
   }) {
     return initial?.call(this);
@@ -174,6 +185,7 @@ class _$Initial implements Initial {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Initial value)? initial,
     TResult Function(Downloading value)? downloading,
+    TResult Function(Error value)? error,
     TResult Function(ImageDownloaded value)? imageDownloaded,
     required TResult orElse(),
   }) {
@@ -231,6 +243,7 @@ class _$Downloading implements Downloading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() downloading,
+    required TResult Function(String errorMsg) error,
     required TResult Function(bool isSuccessful) imageDownloaded,
   }) {
     return downloading();
@@ -241,6 +254,7 @@ class _$Downloading implements Downloading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? downloading,
+    TResult Function(String errorMsg)? error,
     TResult Function(bool isSuccessful)? imageDownloaded,
   }) {
     return downloading?.call();
@@ -251,6 +265,7 @@ class _$Downloading implements Downloading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? downloading,
+    TResult Function(String errorMsg)? error,
     TResult Function(bool isSuccessful)? imageDownloaded,
     required TResult orElse(),
   }) {
@@ -265,6 +280,7 @@ class _$Downloading implements Downloading {
   TResult map<TResult extends Object?>({
     required TResult Function(Initial value) initial,
     required TResult Function(Downloading value) downloading,
+    required TResult Function(Error value) error,
     required TResult Function(ImageDownloaded value) imageDownloaded,
   }) {
     return downloading(this);
@@ -275,6 +291,7 @@ class _$Downloading implements Downloading {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(Initial value)? initial,
     TResult Function(Downloading value)? downloading,
+    TResult Function(Error value)? error,
     TResult Function(ImageDownloaded value)? imageDownloaded,
   }) {
     return downloading?.call(this);
@@ -285,6 +302,7 @@ class _$Downloading implements Downloading {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Initial value)? initial,
     TResult Function(Downloading value)? downloading,
+    TResult Function(Error value)? error,
     TResult Function(ImageDownloaded value)? imageDownloaded,
     required TResult orElse(),
   }) {
@@ -297,6 +315,149 @@ class _$Downloading implements Downloading {
 
 abstract class Downloading implements ImageDownloaderState {
   const factory Downloading() = _$Downloading;
+}
+
+/// @nodoc
+abstract class _$$ErrorCopyWith<$Res> {
+  factory _$$ErrorCopyWith(_$Error value, $Res Function(_$Error) then) =
+      __$$ErrorCopyWithImpl<$Res>;
+  $Res call({String errorMsg});
+}
+
+/// @nodoc
+class __$$ErrorCopyWithImpl<$Res>
+    extends _$ImageDownloaderStateCopyWithImpl<$Res>
+    implements _$$ErrorCopyWith<$Res> {
+  __$$ErrorCopyWithImpl(_$Error _value, $Res Function(_$Error) _then)
+      : super(_value, (v) => _then(v as _$Error));
+
+  @override
+  _$Error get _value => super._value as _$Error;
+
+  @override
+  $Res call({
+    Object? errorMsg = freezed,
+  }) {
+    return _then(_$Error(
+      errorMsg: errorMsg == freezed
+          ? _value.errorMsg
+          : errorMsg // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$Error implements Error {
+  const _$Error({required this.errorMsg});
+
+  @override
+  final String errorMsg;
+
+  @override
+  String toString() {
+    return 'ImageDownloaderState.error(errorMsg: $errorMsg)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$Error &&
+            const DeepCollectionEquality().equals(other.errorMsg, errorMsg));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(errorMsg));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$ErrorCopyWith<_$Error> get copyWith =>
+      __$$ErrorCopyWithImpl<_$Error>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() downloading,
+    required TResult Function(String errorMsg) error,
+    required TResult Function(bool isSuccessful) imageDownloaded,
+  }) {
+    return error(errorMsg);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? downloading,
+    TResult Function(String errorMsg)? error,
+    TResult Function(bool isSuccessful)? imageDownloaded,
+  }) {
+    return error?.call(errorMsg);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? downloading,
+    TResult Function(String errorMsg)? error,
+    TResult Function(bool isSuccessful)? imageDownloaded,
+    required TResult orElse(),
+  }) {
+    if (error != null) {
+      return error(errorMsg);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Initial value) initial,
+    required TResult Function(Downloading value) downloading,
+    required TResult Function(Error value) error,
+    required TResult Function(ImageDownloaded value) imageDownloaded,
+  }) {
+    return error(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(Initial value)? initial,
+    TResult Function(Downloading value)? downloading,
+    TResult Function(Error value)? error,
+    TResult Function(ImageDownloaded value)? imageDownloaded,
+  }) {
+    return error?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Initial value)? initial,
+    TResult Function(Downloading value)? downloading,
+    TResult Function(Error value)? error,
+    TResult Function(ImageDownloaded value)? imageDownloaded,
+    required TResult orElse(),
+  }) {
+    if (error != null) {
+      return error(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class Error implements ImageDownloaderState {
+  const factory Error({required final String errorMsg}) = _$Error;
+
+  String get errorMsg => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  _$$ErrorCopyWith<_$Error> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -367,6 +528,7 @@ class _$ImageDownloaded implements ImageDownloaded {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() downloading,
+    required TResult Function(String errorMsg) error,
     required TResult Function(bool isSuccessful) imageDownloaded,
   }) {
     return imageDownloaded(isSuccessful);
@@ -377,6 +539,7 @@ class _$ImageDownloaded implements ImageDownloaded {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? downloading,
+    TResult Function(String errorMsg)? error,
     TResult Function(bool isSuccessful)? imageDownloaded,
   }) {
     return imageDownloaded?.call(isSuccessful);
@@ -387,6 +550,7 @@ class _$ImageDownloaded implements ImageDownloaded {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? downloading,
+    TResult Function(String errorMsg)? error,
     TResult Function(bool isSuccessful)? imageDownloaded,
     required TResult orElse(),
   }) {
@@ -401,6 +565,7 @@ class _$ImageDownloaded implements ImageDownloaded {
   TResult map<TResult extends Object?>({
     required TResult Function(Initial value) initial,
     required TResult Function(Downloading value) downloading,
+    required TResult Function(Error value) error,
     required TResult Function(ImageDownloaded value) imageDownloaded,
   }) {
     return imageDownloaded(this);
@@ -411,6 +576,7 @@ class _$ImageDownloaded implements ImageDownloaded {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(Initial value)? initial,
     TResult Function(Downloading value)? downloading,
+    TResult Function(Error value)? error,
     TResult Function(ImageDownloaded value)? imageDownloaded,
   }) {
     return imageDownloaded?.call(this);
@@ -421,6 +587,7 @@ class _$ImageDownloaded implements ImageDownloaded {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Initial value)? initial,
     TResult Function(Downloading value)? downloading,
+    TResult Function(Error value)? error,
     TResult Function(ImageDownloaded value)? imageDownloaded,
     required TResult orElse(),
   }) {

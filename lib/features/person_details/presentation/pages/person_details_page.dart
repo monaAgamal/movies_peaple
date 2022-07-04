@@ -138,6 +138,7 @@ class ImageGrid extends StatelessWidget {
       ),
       itemCount: personImagesPaths.length,
       itemBuilder: (_, index) {
+        log("hi : ${imageConfiguration.imageConfiguration.secureBaseUrl}${imageConfiguration.imageConfiguration.profileSizes.last}${personImagesPaths[index]}");
         return GestureDetector(
           onTap: () {
             Navigator.of(context).push(

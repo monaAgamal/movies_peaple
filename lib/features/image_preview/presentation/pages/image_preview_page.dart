@@ -17,37 +17,86 @@ class ImagePreviewPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    log(imagePath);
-    return Scaffold(
-      appBar: AppBar(
-        actions: [
-          Padding(
-              padding: const EdgeInsets.only(right: 8.0),
-            child: BlocBuilder<ImageDownloaderCubit, ImageDownloaderState>(
-              bloc: cubit,
-              builder: (context, state) {
-                return state.maybeWhen(
-                  downloading: () => const SizedBox(
-                    width: 54,
-                    height: 54,
-                    child: CircularProgressIndicator(color: Colors.black),
-                  ),
-                  orElse: () => GestureDetector(
-                    onTap: () {},
-                    child: const Icon(
-                      Icons.download,
-                      color: Colors.black,
+    return BlocListener<ImageDownloaderCubit, ImageDownloaderState>(
+      listenWhen: (prev, current) => current is ImageDownloaded,
+      bloc: cubit,
+      listener: (_, state) => state.maybeWhen(
+        orElse: () {},
+        imageDownloaded: (isSuccessful) => showDialog(
+          context: context,
+          builder: (_) => AlertDialog(
+            scrollable: false,
+            contentPadding: EdgeInsets.zero,
+            content: SizedBox(
+              height: MediaQuery.of(context).size.height * 0.3,
+              child: Center(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    const Text('Image saved successfully'),
+                    const SizedBox(height: 12),
+                    TextButton(
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
+                      child: Container(
+                        padding: const EdgeInsets.all(12),
+                        decoration: BoxDecoration(
+                          shape: BoxShape.rectangle,
+                          border: Border.all(color: Colors.black),
+                        ),
+                        child: const Text(
+                          "OK",
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
                     ),
-                  ),
-                );
-              },
-            ),
+                  ],
+                ),
               ),
-        ],
+            ),
+          ),
+        ),
       ),
-      body: Image.network(
-        imagePath,
-        fit: BoxFit.cover,
+      child: Scaffold(
+        appBar: AppBar(
+          actions: [
+            Padding(
+              padding: const EdgeInsets.only(right: 8.0),
+              child: BlocBuilder<ImageDownloaderCubit, ImageDownloaderState>(
+                bloc: cubit,
+                builder: (context, state) {
+                  return state.maybeWhen(
+                    downloading: () => const SizedBox(
+                      width: 54,
+                      height: 54,
+                      child: Padding(
+                        padding: EdgeInsets.all(18.0),
+                        child: CircularProgressIndicator(color: Colors.black),
+                      ),
+                    ),
+                    orElse: () => GestureDetector(
+                      onTap: () {
+                        cubit.saveDownloadableImageToLocal(imageUrl: imagePath);
+                      },
+                      child: const Icon(
+                        Icons.download,
+                        color: Colors.black,
+                      ),
+                    ),
+                  );
+                },
+              ),
+            ),
+          ],
+        ),
+        body: Image.network(
+          imagePath,
+          fit: BoxFit.cover,
+        ),
       ),
     );
   }
